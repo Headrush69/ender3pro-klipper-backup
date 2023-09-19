@@ -24,6 +24,7 @@ while read -r path; do
 done < <(grep 'path_' "$parent_path"/.env | sed 's/^.*=//')
 
 # Git commands
+FILTER_BRANCH_SQUELCH_WARNING=1
 git init
 git filter-branch --force --index-filter \
   'git rm -r --cached --ignore-unmatch "$parent_path"/.env' \
